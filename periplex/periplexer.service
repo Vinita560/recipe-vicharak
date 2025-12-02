@@ -1,0 +1,10 @@
+[Unit]
+Description=Periplexer Service
+Requires=rah.service
+
+[Service]
+ExecStartPre=/bin/sleep 3
+ExecStart=/usr/bin/periplexer
+
+[Install]
+WantedBy=multi-user.target
