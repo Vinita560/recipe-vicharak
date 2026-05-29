@@ -1,5 +1,15 @@
 #include <stdint.h>
 
+/* define DRAM usecase */
+#define USE_DRAM_CPU2FPGA_ONLY 0
+#define USE_DRAM_FPGA2CPU_ONLY 1
+#define USE_DRAM_CPU2FPGA_AND_FPGA2CPU 2
+
+/* define DRAM modes */
+#define NO_DRAM 0
+#define DIRECT_DRAM 1
+#define HYBRID_DRAM 2
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -60,6 +70,41 @@ unsigned long rah_max_buffer_size(void);
  */
 int rah_check_version_compatible(void);
 
+/*
+ * Set the DRAM mode for a specific application
+ * @param appid: The application ID
+ * @param mode: The DRAM mode to set (NO_DRAM, DIRECT_DRAM, HYBRID_DRAM)
+ */
+int rah_dram_set_mode(const uint8_t appid, const uint8_t mode);
+
+/*
+ * Set the DRAM usecase for a specific application
+ * @param appid: The application ID
+ * @param usecase: The DRAM usecase to set
+ * 	(USE_DRAM_CPU2FPGA_ONLY, USE_DRAM_FPGA2CPU_ONLY,
+ *	USE_DRAM_CPU2FPGA_AND_FPGA2CPU)
+ */
+int rah_dram_set_usecase(const uint8_t appid, const uint8_t usecase);
+
+/*
+ * Get the DRAM mode for a specific application
+ * @param appid: The application ID
+ * @param mode: Pointer to store the current DRAM mode
+ */
+int rah_dram_get_usecase(const uint8_t appid, uint8_t *usecase);
+
+/*
+ * Allocate DRAM memory for a specific application
+ * @param appid: The application ID
+ * @param len: The length of the memory to allocate
+ */
+int rah_dram_memory_alloc(const uint8_t appid, const int len);
+
+/*
+ * Free DRAM memory for a specific application
+ * @param appid: The application ID
+ */
+int rah_dram_memory_free(const uint8_t appid);
 #ifdef __cplusplus
 }
 #endif
