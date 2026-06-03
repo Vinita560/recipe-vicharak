@@ -4,7 +4,7 @@ set -e
 
 _U_BOOT_DIRECTORY="/boot/extlinux"
 _U_BOOT_DTB_DIR="/boot"
-_U_BOOT_DTBO_BASE="/boot/overlays-5.10.238-vaaman"
+_U_BOOT_DTBO_BASE="/boot/overlays-$(uname -r)"
 _EXTLINUX_FILE="${_U_BOOT_DIRECTORY}/extlinux.conf"
 
 Update() {
