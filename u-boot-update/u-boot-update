@@ -99,7 +99,7 @@ LABEL Poky
         KERNEL /${_KERNEL}
         FDT /${_DTB}
         ${_FDTOVERLAYS}
-        APPEND PARTUUID=${_PARTUUID} rootwait rw rootfstype=ext4 1500000n8
+        APPEND PARTUUID=${_PARTUUID} rootwait rw rootfstype=ext4 1500000n8 video=HDMI-A-1:800x600@60
 "
 
 Update "${_EXTLINUX_FILE}" "${_CONFIG}"
